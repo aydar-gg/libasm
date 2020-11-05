@@ -1,8 +1,8 @@
-sectoin .text
+section .text
 	global _ft_write
 
-ft_write:
-	movr rax, 0x2000004
+_ft_write:
+	mov rax, 0x2000004
 	syscall
 	jc error
 	ret
