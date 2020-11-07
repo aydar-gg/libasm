@@ -6,19 +6,16 @@ section .text
 
 _ft_strdup:
 	push rdi
-	call _ft_strlen
-	inc rax
+	call _ft_strlen ;(rdi) ret rax
 	mov rdi, rax
-	call _malloc
-	cmp eax, 0
-	je error
-	mov rsi, rdi
+	inc rdi
+	call _malloc ;ret rax
+	cmp rax, 0
+	je _return
+	pop rsi
 	mov rdi, rax
-	call _ft_strcpy
-	pop rdi
+	call _ft_strcpy ;(rdi, rsi)
 	ret
 
-error:
-	mov rax, 0
-	pop rdi
+_return:
 	ret

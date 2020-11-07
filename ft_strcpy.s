@@ -1,16 +1,18 @@
 segment .text
 	global _ft_strcpy
+	extern _ft_strlen
 _ft_strcpy:
-	mov rax, 0
+	mov rax, rdi
+	xor r8, r8
 	jmp count_cpy
 count_cpy:
-	mov ah, byte[rsi + rax]
-	mov byte[rdi + rax], ah
-	cmp ah, 0
-	je exit
-	inc rax
+	mov r8b, byte[rsi]
+	mov byte[rdi], r8b
+	test r8b, r8b
+	jz exit
+	inc rsi
+	inc rdi
 	jmp count_cpy
 
 exit:
-	mov rax, rdi
 	ret

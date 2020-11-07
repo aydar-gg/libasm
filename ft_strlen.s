@@ -1,11 +1,11 @@
 segment .text
 	global _ft_strlen
 _ft_strlen:
-	mov rax, 0
+	xor rax, rax
 	jmp count_len
 
 count_len:
-	cmp byte[rdi + rax], 0
+	cmp byte[rdi + rax], 0x0
 	je exit
 	inc rax
 	jmp count_len
